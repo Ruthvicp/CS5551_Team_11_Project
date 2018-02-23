@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class Home extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class Home extends AppCompatActivity {
 
     public void toShopping(View v)
     {
-        Intent redirect = new Intent(Home.this, ShoppingActivity.class);
+        Intent redirect = new Intent(LoginActivity.this, ShoppingActivity.class);
         startActivity(redirect);
     }
 }
