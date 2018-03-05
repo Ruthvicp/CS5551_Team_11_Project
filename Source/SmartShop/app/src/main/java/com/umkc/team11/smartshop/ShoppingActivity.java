@@ -11,6 +11,7 @@ import android.widget.EditText;
 public class ShoppingActivity extends AppCompatActivity {
 
     private SearchAPI search;
+    private SearchData sql;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,8 @@ public class ShoppingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sql = SearchData.getInstance(this);
 
         search = new SearchAPI();
 
