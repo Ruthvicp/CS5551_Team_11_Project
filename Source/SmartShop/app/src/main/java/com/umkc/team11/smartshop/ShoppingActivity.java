@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class ShoppingActivity extends AppCompatActivity {
 
-    private SearchAPI search;
+    //private SearchAPI search;
     private SearchData sql;
 
     @Override
@@ -22,7 +24,7 @@ public class ShoppingActivity extends AppCompatActivity {
 
         sql = SearchData.getInstance(this);
 
-        search = new SearchAPI();
+        //search = new SearchAPI();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +40,8 @@ public class ShoppingActivity extends AppCompatActivity {
     {
         EditText searchText = findViewById(R.id.txt_search);
         String searchPhrase = String.valueOf(searchText.getText());
-        search.searchAPIs(searchPhrase);
+        ArrayList<ItemData> searchReturn = sql.getShoppingItems(searchPhrase);
+        //search.searchAPIs(searchPhrase);
     }
 
 }

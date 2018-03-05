@@ -21,7 +21,7 @@ import java.util.Map;
 
 public class SearchAPI {
 
-    public SearchAPI()
+    /*public SearchAPI()
     {
 
     }
@@ -61,5 +61,5 @@ public class SearchAPI {
 
         return list;
 
-    }
+    }*/
 }
