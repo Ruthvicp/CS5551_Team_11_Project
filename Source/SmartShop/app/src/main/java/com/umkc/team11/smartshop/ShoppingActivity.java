@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,11 @@ public class ShoppingActivity extends AppCompatActivity {
         EditText searchText = findViewById(R.id.txt_search);
         String searchPhrase = String.valueOf(searchText.getText());
         ArrayList<ItemData> searchReturn = sql.getShoppingItems(searchPhrase);
+        // find the list view
+        ListView lv = findViewById(R.id.lst_items);
+
+        // place the data into the list
+        lv.setAdapter(new ItemAdapter(this, searchReturn));
         //search.searchAPIs(searchPhrase);
     }
 
