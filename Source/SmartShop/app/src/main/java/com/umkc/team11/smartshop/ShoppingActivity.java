@@ -9,11 +9,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingActivity extends AppCompatActivity {
 
-    //private SearchAPI search;
     private SearchData sql;
 
     @Override
@@ -24,8 +32,6 @@ public class ShoppingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sql = SearchData.getInstance(this);
-
-        //search = new SearchAPI();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +53,46 @@ public class ShoppingActivity extends AppCompatActivity {
 
         // place the data into the list
         lv.setAdapter(new ItemAdapter(this, searchReturn));
-        //search.searchAPIs(searchPhrase);
+        //searchAPIs(searchPhrase);
+    }
+
+    public ArrayList<String> searchAPIs(String searchText)
+    {
+        String url ="https://api.indix.com/v2/summary/products?countryCode=US&q=" + searchText + "&app_key=w2xqtl4uBXLJnCk0zscGrt86TEh80bmx";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("Accept", "application/json");
+        ArrayList<String> list = new ArrayList<>();
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println(response.toString());
+                        /*try {
+                            //JSONArray jarray = response.getJSONArray("searchresultgroups");
+
+                            for(int i = 0; i < jarray.length(); i++)
+                            {
+                                JSONObject item = jarray.getJSONObject(i);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }*/
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO Auto-generated method stub
+                        System.out.println("Error");
+                    }
+                });
+
+        MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
+
+        return list;
+
     }
 
 }

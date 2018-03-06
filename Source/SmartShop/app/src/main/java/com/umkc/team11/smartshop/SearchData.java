@@ -150,7 +150,7 @@ public class SearchData extends SQLiteOpenHelper
     {
         // Select all items with same listID
         String LISTS_SELECT_QUERY = "SELECT * FROM " + DATA_TABLE_ITEMS + " WHERE (" + KEY_ITEM_NAME + " LIKE \"%" +
-                search + "%\");" + " OR (CREATOR LIKE \"%" + search + "%\") OR (DESCRIPTION LIKE \"%" + search +
+                search + "%\")" + " OR (CREATOR LIKE \"%" + search + "%\") OR (DESCRIPTION LIKE \"%" + search +
                 "%\") OR (COLOR LIKE \"%" + search + "%\");";
 
         // gets the database
