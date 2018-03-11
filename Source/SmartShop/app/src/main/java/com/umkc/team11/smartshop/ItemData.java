@@ -32,6 +32,20 @@ public class ItemData
     } // end default constructor
 
     // Parameter constructor
+    ItemData(String tempName, String tCreator, double tPrice, String tImage)
+    {
+        id = 0;
+        name = tempName;
+        creator = tCreator;
+        price = tPrice;
+        size = "";
+        store = "";
+        description = "";
+        image = tImage;
+        color = "";
+    } // end parameter constructor
+
+    // Parameter constructor
     ItemData(int tId, String tempName, String tCreator, double tPrice, String tSize, String tStore, String tDesc, String tColor, String tImage)
     {
         id = tId;

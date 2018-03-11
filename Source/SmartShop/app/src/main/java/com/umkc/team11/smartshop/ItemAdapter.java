@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 /**
@@ -49,12 +49,15 @@ public class ItemAdapter extends ArrayAdapter
         quantityView.setText(String.valueOf("By: " + values.get(position).getCreator()));
 
         TextView storeView = rowView.findViewById(R.id.txt_store);
-        storeView.setText(String.valueOf("At: " + values.get(position).getStore()));
+        storeView.setText(String.valueOf(", For: $" + values.get(position).getPrice()));
 
         ImageView iv = rowView.findViewById(R.id.img_item);
         String image = values.get(position).getImage();
-        int drawableID = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
-        iv.setImageResource(drawableID);
+
+        Picasso.with(context)
+                .load(image)
+                .resize(100,100)
+                .into(iv);
 
         // returns completed view
         return rowView;
