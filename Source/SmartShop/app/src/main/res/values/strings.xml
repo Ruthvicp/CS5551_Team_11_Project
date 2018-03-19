@@ -8,4 +8,6 @@
     <string name="lbl_photo_search">Search Using a Photo</string>
     <string name="upload_photo">Upload a Photo</string>
     <string name="take_photo">Take a Photo</string>
+    <string name="lbl_sort">Sort By:</string>
+    <string name="btn_sort">Sort</string>
 </resources>
