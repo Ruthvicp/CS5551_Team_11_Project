@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trump1", "Trump1.csproj", "{B76AB53C-9B7F-4577-C246-8AB7EB0982C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trump1.Editor", "Trump1.Editor.csproj", "{F75F3B1C-22AB-6727-EB4B-DDF91A5727EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B76AB53C-9B7F-4577-C246-8AB7EB0982C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76AB53C-9B7F-4577-C246-8AB7EB0982C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76AB53C-9B7F-4577-C246-8AB7EB0982C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76AB53C-9B7F-4577-C246-8AB7EB0982C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F75F3B1C-22AB-6727-EB4B-DDF91A5727EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75F3B1C-22AB-6727-EB4B-DDF91A5727EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75F3B1C-22AB-6727-EB4B-DDF91A5727EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75F3B1C-22AB-6727-EB4B-DDF91A5727EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
