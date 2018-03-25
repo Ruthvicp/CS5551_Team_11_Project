@@ -2,8 +2,6 @@ package com.umkc.team11.smartshop;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,8 +22,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ShoppingActivity extends AppCompatActivity {
 
@@ -100,8 +96,6 @@ public class ShoppingActivity extends AppCompatActivity {
     public void searchAPIs(String searchText)
     {
         String url ="https://api.indix.com/v2/summary/products?countryCode=US&q=" + searchText + "&app_key=w2xqtl4uBXLJnCk0zscGrt86TEh80bmx";
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("Accept", "application/json");
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>()
@@ -134,6 +128,10 @@ public class ShoppingActivity extends AppCompatActivity {
                         catch (JSONException e)
                         {
                             e.printStackTrace();
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
                         } // end try/catch
                     }
                 }, new Response.ErrorListener() {
@@ -147,5 +145,4 @@ public class ShoppingActivity extends AppCompatActivity {
 
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
     } // end searchAPIs
-
-}
+} // end ShoppingActivity

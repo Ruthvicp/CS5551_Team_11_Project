@@ -54,10 +54,13 @@ public class ItemAdapter extends ArrayAdapter
         ImageView iv = rowView.findViewById(R.id.img_item);
         String image = values.get(position).getImage();
 
-        Picasso.with(context)
-                .load(image)
-                .resize(100,100)
-                .into(iv);
+        if(!image.equals("") && !image.equals(null))
+        {
+            Picasso.with(context)
+                    .load(image)
+                    .resize(100, 100)
+                    .into(iv);
+        } // end if
 
         // returns completed view
         return rowView;
