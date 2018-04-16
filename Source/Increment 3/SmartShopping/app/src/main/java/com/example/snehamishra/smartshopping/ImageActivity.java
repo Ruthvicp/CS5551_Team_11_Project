@@ -63,6 +63,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         feature = new Feature();
         feature.setType("LABEL_DETECTION");
         feature.setMaxResults(10);
+
+        skip.setOnClickListener(this);
+        back.setOnClickListener(this);
     }
 
     //assign the widgets to instances

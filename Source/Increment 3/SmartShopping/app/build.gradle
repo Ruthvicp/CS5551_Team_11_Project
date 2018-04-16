@@ -69,7 +69,11 @@ dependencies {
     compile 'com.google.apis:google-api-services-vision:v1-rev2-1.21.0' exclude module: 'httpclient'
 
     //add libraries
-    compile 'com.google.cloud:google-cloud-vision:1.14.0'
+    compile ('com.google.cloud:google-cloud-vision:1.14.0') {
+        exclude group: 'com.google.guava'
+    }
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation "com.squareup.picasso:picasso:2.4.0"
 }
 
 
