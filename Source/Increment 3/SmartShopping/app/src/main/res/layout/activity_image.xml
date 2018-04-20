@@ -97,4 +97,14 @@
         android:layout_below="@+id/imageAnalyze_btn"
         android:layout_marginTop="32dp"
         android:text="Analysis Description" />
+
+    <Button
+        android:id="@+id/trends_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageGallery_btn"
+        android:layout_alignRight="@+id/imageGallery_btn"
+        android:layout_below="@+id/imageAnaShop_btn"
+        android:layout_marginTop="17dp"
+        android:text="Trends" />
 </RelativeLayout>
