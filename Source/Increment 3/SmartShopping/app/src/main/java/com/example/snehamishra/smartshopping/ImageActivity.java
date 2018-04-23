@@ -44,7 +44,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Uri imageCapturedUri;
 
     private TextView uName, back, skip, description;
-    private Button camera, gallery, analyze, shop;
+    private Button camera, gallery, analyze, shop, trends;
     private ImageView imageDisplay;
 
     @Override
@@ -63,6 +63,11 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         feature = new Feature();
         feature.setType("LABEL_DETECTION");
         feature.setMaxResults(10);
+
+        skip.setOnClickListener(this);
+        back.setOnClickListener(this);
+        trends.setOnClickListener(this);
+
     }
 
     //assign the widgets to instances
@@ -70,6 +75,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         uName = findViewById(R.id.userNameTextView);
         back = findViewById(R.id.imageBackTV);
         skip = findViewById(R.id.imageSkipTV);
+        trends = findViewById(R.id.trends_btn);
         description = findViewById(R.id.imageAnalysisDescription);
         camera = findViewById(R.id.imageCamera_btn);
         gallery = findViewById(R.id.imageGallery_btn);
@@ -109,6 +115,11 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 //user selects to analysis of the image for shopping
                 //something
                 break;
+            case R.id.trends_btn:
+                startActivity(new Intent(ImageActivity.this,ARActivity.class));
+                finish();
+                break;
+
         }
     }
 
