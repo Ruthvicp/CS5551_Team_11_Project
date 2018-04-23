@@ -52,13 +52,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        String userName = getIntent().getStringExtra("userName");
-
         //assign the widgets to instances
         assignWidgets();
 
+        String userName = getIntent().getStringExtra("userName");
+
         //welcome user message
-        uName.setText("Welcome "+userName +" to the Image Activity Page");
+        uName.setText("Welcome "+userName +" to the Image Activity!");
 
         feature = new Feature();
         feature.setType("LABEL_DETECTION");
@@ -67,6 +67,10 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         skip.setOnClickListener(this);
         back.setOnClickListener(this);
         trends.setOnClickListener(this);
+        camera.setOnClickListener(this);
+        gallery.setOnClickListener(this);
+        shop.setOnClickListener(this);
+        analyze.setOnClickListener(this);
 
     }
 

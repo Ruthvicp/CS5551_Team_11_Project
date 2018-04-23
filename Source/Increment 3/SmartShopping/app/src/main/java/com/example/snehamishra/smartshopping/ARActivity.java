@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import java.security.Security;
 import java.util.ArrayList;
@@ -41,7 +42,9 @@ import java.util.List;
         import com.mongodb.client.MongoDatabase;
         import org.bson.Document;
 
-public class ARActivity extends AppCompatActivity {
+public class ARActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private TextView back;
 
     MongoClientURI uri = null;
     MongoClient client = null;
@@ -57,6 +60,8 @@ public class ARActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
+
+        back = findViewById(R.id.back_ToImage);
        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        // setSupportActionBar(toolbar);
 
@@ -96,6 +101,10 @@ public class ARActivity extends AppCompatActivity {
                 }
             }
         }); */
+
+
+        // Set on click listener to buttons
+        back.setOnClickListener(this);
     }
 
     private void setupPieChart() {
@@ -149,6 +158,12 @@ public class ARActivity extends AppCompatActivity {
         }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(ARActivity.this, ImageActivity.class));
+        finish();
     }
 
 }
