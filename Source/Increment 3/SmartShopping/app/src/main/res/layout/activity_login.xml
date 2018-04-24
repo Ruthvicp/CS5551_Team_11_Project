@@ -30,7 +30,10 @@
         android:layout_alignBottom="@+id/twitterLogin_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="140dp"
-        android:text="Login" />
+        android:text="Login"
+        android:textStyle="bold"
+        android:textColor="@color/colorTextWhite"
+        android:background="@color/colorAccent"/>
 
     <EditText
         android:id="@+id/userNameEditText"
