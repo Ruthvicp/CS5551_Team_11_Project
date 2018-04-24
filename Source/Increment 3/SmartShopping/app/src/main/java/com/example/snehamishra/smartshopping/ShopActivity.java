@@ -2,6 +2,7 @@ package com.example.snehamishra.smartshopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +48,17 @@ public class ShopActivity extends AppCompatActivity
         spinSort.setAdapter(adapter);
 
         appContext = this;
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent launch = getPackageManager().getLaunchIntentForPackage("com.umkc.trump");
+                if (launch != null) {
+                    startActivity(launch);
+                }
+            }
+        });
     } // end onCreate
 
     public void searchCall(View v)
@@ -152,4 +164,17 @@ public class ShopActivity extends AppCompatActivity
 
         MySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
     } // end searchAPIs
+
+
+    public void startUnity(View view) {
+        Intent launch = getPackageManager().getLaunchIntentForPackage("com.umkc.trump");
+        if (launch != null)
+        {
+            startActivity(launch);
+        }
+        else
+        {
+
+        }
+    }
 } // end ShopActivity
