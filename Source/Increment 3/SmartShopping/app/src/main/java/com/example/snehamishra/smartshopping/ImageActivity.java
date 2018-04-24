@@ -44,7 +44,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Uri imageCapturedUri;
 
     private TextView uName, back, skip, description;
-    private Button camera, gallery, analyze, shop, trends;
+    private Button camera, gallery, analyze, shop;
     private ImageView imageDisplay;
 
     @Override
@@ -67,7 +67,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         // Set on click listener to buttons
         skip.setOnClickListener(this);
         back.setOnClickListener(this);
-        trends.setOnClickListener(this);
         camera.setOnClickListener(this);
         gallery.setOnClickListener(this);
         shop.setOnClickListener(this);
@@ -80,7 +79,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         uName = findViewById(R.id.userNameTextView);
         back = findViewById(R.id.imageBackTV);
         skip = findViewById(R.id.imageSkipTV);
-        trends = findViewById(R.id.trends_btn);
         description = findViewById(R.id.imageAnalysisDescription);
         camera = findViewById(R.id.imageCamera_btn);
         gallery = findViewById(R.id.imageGallery_btn);
@@ -118,10 +116,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 //user selects to analysis of the image for shopping
                 Toast.makeText(getApplicationContext(),"Clicking shopping button!!",Toast.LENGTH_SHORT).show();
                 shopUsingAnalysis();
-                break;
-            case R.id.trends_btn:
-                startActivity(new Intent(ImageActivity.this,ARActivity.class));
-                finish();
                 break;
 
         }

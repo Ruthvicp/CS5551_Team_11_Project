@@ -66,8 +66,8 @@
                 android:paddingHorizontal="10sp"
                 android:text="@string/view_trends"
                 android:textColor="@color/colorTextWhite"
-                android:textStyle="bold" />
-
+                android:textStyle="bold"
+                android:onClick="startTrends" />
         </RelativeLayout>
 
         <RelativeLayout
