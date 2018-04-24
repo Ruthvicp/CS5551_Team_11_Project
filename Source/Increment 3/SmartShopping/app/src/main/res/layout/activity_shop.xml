@@ -14,14 +14,14 @@
         tools:layout_absoluteY="0dp">
 
         <TextView
-            android:id="@+id/btn_back"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:onClick="back"
-            android:text="@string/btn_back" />
+        android:id="@+id/btn_back"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="back"
+        android:text="@string/btn_back" />
 
         <RelativeLayout
             android:layout_width="match_parent"
