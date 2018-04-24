@@ -29,27 +29,44 @@
 
             <TextView
                 android:id="@+id/lbl_AR"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-
                 android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:text="    Launch Augmented Reality"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="41dp"
+                android:layout_marginStart="41dp"
+                android:text="@string/ar"
                 android:textSize="20dp" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                app:backgroundTint="@color/colorTrendsButton"
+                android:layout_gravity="top|end"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/lbl_AR"
+                android:layout_toRightOf="@+id/lbl_AR"
+                android:onClick="startUnity"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
+
+            <Button
+                android:id="@+id/trends_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10sp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:layout_gravity="top|end"
-                android:layout_marginEnd="73dp"
-                android:layout_marginRight="73dp"
-                android:onClick="startUnity"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
+                android:layout_marginEnd="41dp"
+                android:layout_marginRight="41dp"
+                android:background="@color/colorTrendsBlue"
+                android:textColor="@color/colorTextWhite"
+                android:textStyle="bold"
+                android:text="@string/view_trends" />
 
         </RelativeLayout>
 

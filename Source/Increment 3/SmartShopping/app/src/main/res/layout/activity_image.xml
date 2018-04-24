@@ -98,6 +98,7 @@
         android:layout_marginTop="32dp"
         android:text="Analysis Description" />
 
+    <!--
     <Button
         android:id="@+id/trends_btn"
         android:layout_width="wrap_content"
@@ -108,5 +109,5 @@
         android:layout_alignLeft="@+id/imageAnaShop_btn"
         android:layout_alignRight="@+id/imageGallery_btn"
         android:layout_alignStart="@+id/imageAnaShop_btn"
-        android:text="Trends" />
+        android:text="Trends" />  -->
 </RelativeLayout>

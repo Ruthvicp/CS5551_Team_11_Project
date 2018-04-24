@@ -12,4 +12,6 @@
     <string name="lbl_sort">Sort By:</string>
     <string name="btn_sort">Sort</string>
     <string name="btn_back">Back</string>
+    <string name="ar">AR</string>
+    <string name="view_trends">View Trends</string>
 </resources>
