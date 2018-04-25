@@ -53,18 +53,18 @@
         android:id="@+id/imageGallery_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageSkipTV"
-        android:layout_alignRight="@+id/imageSkipTV"
-        android:layout_alignTop="@+id/imageCamera_btn"
+        android:layout_alignBaseline="@+id/imageCamera_btn"
+        android:layout_alignBottom="@+id/imageCamera_btn"
+        android:layout_alignEnd="@+id/imageAnaShop_btn"
+        android:layout_alignRight="@+id/imageAnaShop_btn"
         android:text="Use Gallery" />
 
     <ImageView
         android:id="@+id/imageDisplayView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/imageCamera_btn"
-        android:layout_toLeftOf="@+id/imageSkipTV"
-        android:layout_toStartOf="@+id/imageSkipTV"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <Button
@@ -82,8 +82,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/imageAnalyze_btn"
         android:layout_alignBottom="@+id/imageAnalyze_btn"
-        android:layout_alignLeft="@+id/imageGallery_btn"
-        android:layout_alignStart="@+id/imageGallery_btn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
         android:text="Shop using Analysis" />
 
     <TextView
@@ -96,6 +98,7 @@
         android:layout_marginTop="32dp"
         android:text="Analysis Description" />
 
+    <!--
     <Button
         android:id="@+id/trends_btn"
         android:layout_width="wrap_content"
@@ -103,6 +106,8 @@
         android:layout_alignBaseline="@+id/imageAnalysisDescription"
         android:layout_alignBottom="@+id/imageAnalysisDescription"
         android:layout_alignEnd="@+id/imageGallery_btn"
+        android:layout_alignLeft="@+id/imageAnaShop_btn"
         android:layout_alignRight="@+id/imageGallery_btn"
-        android:text="Trends" />
+        android:layout_alignStart="@+id/imageAnaShop_btn"
+        android:text="Trends" />  -->
 </RelativeLayout>

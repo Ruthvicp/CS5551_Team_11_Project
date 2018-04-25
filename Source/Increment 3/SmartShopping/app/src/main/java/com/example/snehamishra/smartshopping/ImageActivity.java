@@ -27,6 +27,7 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
+import com.google.common.base.Objects;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Uri imageCapturedUri;
 
     private TextView uName, back, skip, description;
-    private Button camera, gallery, analyze, shop, trends;
+    private Button camera, gallery, analyze, shop;
     private ImageView imageDisplay;
 
     @Override
@@ -67,7 +68,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         // Set on click listener to buttons
         skip.setOnClickListener(this);
         back.setOnClickListener(this);
-        trends.setOnClickListener(this);
         camera.setOnClickListener(this);
         gallery.setOnClickListener(this);
         shop.setOnClickListener(this);
@@ -80,7 +80,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         uName = findViewById(R.id.userNameTextView);
         back = findViewById(R.id.imageBackTV);
         skip = findViewById(R.id.imageSkipTV);
-        trends = findViewById(R.id.trends_btn);
         description = findViewById(R.id.imageAnalysisDescription);
         camera = findViewById(R.id.imageCamera_btn);
         gallery = findViewById(R.id.imageGallery_btn);
@@ -119,10 +118,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(getApplicationContext(),"Clicking shopping button!!",Toast.LENGTH_SHORT).show();
                 shopUsingAnalysis();
                 break;
-            case R.id.trends_btn:
-                startActivity(new Intent(ImageActivity.this,ARActivity.class));
-                finish();
-                break;
 
         }
     }
@@ -144,7 +139,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
-            Toast.makeText(getApplicationContext(),"Loading Image, kindly wait !!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Loading Image, kindly wait !!",Toast.LENGTH_SHORT).show();
             switch (requestCode){
                 case CAMERA_INTENT:
                 {
@@ -184,20 +179,33 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callGoogleVision(){
-        if(bitmap == null || imageDisplay == null){
-            Toast.makeText(getApplicationContext(),"No image available to analyze!! try again",Toast.LENGTH_LONG).show();
+        if(imageDisplay == null ){
+            Toast.makeText(getApplicationContext(),"No image available to analyze!! try again",Toast.LENGTH_SHORT).show();
 
         }else {
-            Toast.makeText(getApplicationContext(),"Yuppies!!",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"Yuppies!!",Toast.LENGTH_LONG).show();
 
             final List<Feature> featureList = new ArrayList<>();
             featureList.add(feature);
 
             final List<AnnotateImageRequest> annotateImageRequests = new ArrayList<>();
-
             AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
             annotateImageReq.setFeatures(featureList);
-            annotateImageReq.setImage(getImageEncodeImage(bitmap));
+            if(bitmap == null && imageCapturedUri!=null){
+                Toast.makeText(getApplicationContext(),"Image selected from gallery!!",Toast.LENGTH_SHORT).show();
+                try {
+                    Bitmap bMap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageCapturedUri);
+                    annotateImageReq.setImage(getImageEncodeImage(bMap));
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(),"Cannot Convert image uri to BitMap!!"+e,Toast.LENGTH_SHORT).show();
+                }
+            } else if(imageCapturedUri == null && bitmap!=null){
+                Toast.makeText(getApplicationContext(),"Image used by Camera!!",Toast.LENGTH_SHORT).show();
+                annotateImageReq.setImage(getImageEncodeImage(bitmap));
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"No Image available for Analysis!!",Toast.LENGTH_LONG).show();
+            }
             annotateImageRequests.add(annotateImageReq);
 
             new AsyncTask<Object, Void, String>() {
@@ -231,7 +239,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 protected void onPostExecute(String result) {
-                    Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
+                    convertDescriptionText(result);
                     description.setText(result);
 
                 }
@@ -240,6 +249,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
+    }
+
+    //gets the filtered analysis description
+    private String convertDescriptionText(String result){
+        String desc="";
+        Toast.makeText(getApplicationContext(), "getDescriptionText is - "+result,Toast.LENGTH_SHORT).show();
+        return desc;
     }
 
     private Image getImageEncodeImage(Bitmap bitmap) {

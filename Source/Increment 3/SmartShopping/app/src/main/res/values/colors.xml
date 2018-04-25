@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorSelect">#0FFFFF</color>
+    <color name="colorPrimary">#009999</color>
+    <color name="colorPrimaryDark">#006666</color>
+    <color name="colorAccent">#00aa44</color>
+    <color name="colorSelect">#CFFFFF</color>
+    <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTrendsButton">#FF0066</color>
+    <color name="colorTrendsBlue">#1aa3ff</color>
 </resources>

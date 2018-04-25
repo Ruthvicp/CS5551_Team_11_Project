@@ -71,6 +71,10 @@ public class ShopActivity extends AppCompatActivity
         });
     } // end onCreate
 
+    public void startTrends(View v) {
+                startActivity(new Intent(ShopActivity.this, ARActivity.class));
+    }
+
     public void searchCall(View v)
     {
         EditText searchText = findViewById(R.id.txt_search);
