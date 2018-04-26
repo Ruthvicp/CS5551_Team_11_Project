@@ -179,7 +179,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callGoogleVision(){
-        if(bitmap == null || imageDisplay == null || imageCapturedUri==null){
+        if(imageDisplay == null ){
             Toast.makeText(getApplicationContext(),"No image available to analyze!! try again",Toast.LENGTH_SHORT).show();
 
         }else {
@@ -240,7 +240,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
                 protected void onPostExecute(String result) {
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
-                    getDescriptionText(result);
+                    convertDescriptionText(result);
                     description.setText(result);
 
                 }
@@ -252,7 +252,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     }
 
     //gets the filtered analysis description
-    private String getDescriptionText(String result){
+    private String convertDescriptionText(String result){
         String desc="";
         Toast.makeText(getApplicationContext(), "getDescriptionText is - "+result,Toast.LENGTH_SHORT).show();
         return desc;

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -29,6 +30,7 @@ public class ShopActivity extends AppCompatActivity
     private ArrayList<ItemData> clothData;
     private Context appContext;
     private Spinner spinSort;
+    Button BMI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +41,14 @@ public class ShopActivity extends AppCompatActivity
         ArrayList<String> spinnerArray =  new ArrayList<>();
         spinnerArray.add("Name");
         spinnerArray.add("Price");
+        BMI = (Button)findViewById(R.id.bmi);
+        BMI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Animation.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, spinnerArray);

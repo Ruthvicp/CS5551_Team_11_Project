@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.snehamishra.smartshopping">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,6 +24,11 @@
         <activity android:name=".ImageActivity" />
         <activity android:name=".ShopActivity" />
         <activity android:name=".ARActivity" />
+        <activity android:name=".Animation"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".Second" />
+        <activity android:name=".Distance" />
+        <activity android:name=".Third" />
         <activity android:name=".RecommendationActivity"></activity>
     </application>
 
