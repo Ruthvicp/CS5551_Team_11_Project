@@ -115,7 +115,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.imageAnaShop_btn:
                 //user selects to analysis of the image for shopping
-                Toast.makeText(getApplicationContext(),"Clicking shopping button!!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"Clicking shopping button!!",Toast.LENGTH_SHORT).show();
                 shopUsingAnalysis();
                 break;
 
@@ -240,8 +240,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
                 protected void onPostExecute(String result) {
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
-                    convertDescriptionText(result);
-                    description.setText(result);
+                    String convertedResult = convertDescriptionText(result);
+                    if(convertedResult.isEmpty() || convertedResult!=""){
+                        description.setText(convertedResult);
+                    }else{
+                        description.setText("No Analysis available to display!");
+                    }
+
 
                 }
             }.execute();
@@ -254,7 +259,18 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     //gets the filtered analysis description
     private String convertDescriptionText(String result){
         String desc="";
-        Toast.makeText(getApplicationContext(), "getDescriptionText is - "+result,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), "getDescriptionText is - "+result,Toast.LENGTH_SHORT).show();
+        String[] words = result.split("\\s+");
+        for (int i = 0; i < words.length; i++) {
+            if(i==0){
+                //ignoring the percentage and keeping the words only for analysis
+                desc = desc+words[i]+", ";
+            }else if( (i%2)==0){
+                //even positioned words, do nothing
+            }else {
+                desc = desc+", "+words[i];
+            }
+        }
         return desc;
     }
 
