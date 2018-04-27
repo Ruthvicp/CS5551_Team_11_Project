@@ -13,15 +13,37 @@
         tools:layout_absoluteX="0dp"
         tools:layout_absoluteY="0dp">
 
-        <TextView
-            android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5sp"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-            android:onClick="back"
-            android:text="@string/btn_back" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:onClick="back"
+                android:text="@string/btn_back"
+                android:layout_marginStart="10sp" />
+
+            <Button
+                android:id="@+id/bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/back"
+                android:text="@string/suggestions"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15sp"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="15sp"
+                android:paddingHorizontal="10sp"
+                android:textColor="@android:color/background_light"
+                android:layout_marginEnd="15sp"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,17 +55,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-<<<<<<< HEAD
                 android:layout_alignParentTop="true"
-                android:text="Launch AR"
-                android:textSize="18dp" />
-=======
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="41dp"
-                android:layout_marginStart="41dp"
-                android:text="@string/ar"
-                android:textSize="20dp" />
->>>>>>> 49af31b892efdac0a4ceb587686b5e2172d4ff48
+                android:textSize="18sp"
+                android:layout_marginLeft="18sp"
+                android:layout_marginStart="18sp"
+                android:text="@string/ar" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
@@ -51,32 +67,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="top|end"
-<<<<<<< HEAD
                 android:layout_marginEnd="100dp"
-                android:layout_marginLeft="73dp"
                 android:layout_marginRight="73dp"
-=======
                 android:layout_marginLeft="15dp"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/lbl_AR"
                 android:layout_toRightOf="@+id/lbl_AR"
->>>>>>> 49af31b892efdac0a4ceb587686b5e2172d4ff48
                 android:onClick="startUnity"
                 app:backgroundTint="@color/colorTrendsButton"
                 app:srcCompat="@android:drawable/ic_menu_camera" />
 
             <Button
-<<<<<<< HEAD
-                android:id="@+id/bmi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/back"
-                android:text="Suggestions"
-                android:textColor="@android:color/background_light" />
-
-=======
                 android:id="@+id/trends_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +92,6 @@
                 android:textColor="@color/colorTextWhite"
                 android:textStyle="bold"
                 android:onClick="startTrends" />
->>>>>>> 49af31b892efdac0a4ceb587686b5e2172d4ff48
         </RelativeLayout>
 
         <RelativeLayout
