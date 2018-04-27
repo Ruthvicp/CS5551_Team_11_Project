@@ -31,12 +31,16 @@ public class ShopActivity extends AppCompatActivity
     private Context appContext;
     private Spinner spinSort;
     Button BMI;
+    String imageAnalysis="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+
+        //getting the image anlysis description here if any
+        imageAnalysis = getIntent().getStringExtra("Analysis");
 
         ArrayList<String> spinnerArray =  new ArrayList<>();
         spinnerArray.add("Name");
@@ -78,8 +82,16 @@ public class ShopActivity extends AppCompatActivity
     public void searchCall(View v)
     {
         EditText searchText = findViewById(R.id.txt_search);
-        String searchPhrase = String.valueOf(searchText.getText());
-        searchAPIs(searchPhrase);
+        if(imageAnalysis.isEmpty() || imageAnalysis==""){
+            //no image analysis available for search
+            String searchPhrase = String.valueOf(searchText.getText());
+            searchAPIs(searchPhrase);
+        }else{
+            //search using the image analysis description
+            searchText.setText(imageAnalysis);
+            searchAPIs(imageAnalysis);
+        }
+
     } // end searchCall
 
     public void sortCall(View v)

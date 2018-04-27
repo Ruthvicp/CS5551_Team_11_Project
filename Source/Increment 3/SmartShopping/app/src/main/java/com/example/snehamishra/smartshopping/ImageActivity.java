@@ -48,6 +48,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Button camera, gallery, analyze, shop;
     private ImageView imageDisplay;
 
+    //list of furniture names for the analysis search
+    String[] furnitures = {"chair","table", "sofa", "love seat", "fan", "bed","couch","mattress","cushions","recliners"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +102,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             case R.id.imageSkipTV:
                 //user navigates to the Shopping page
                 startActivity(new Intent(ImageActivity.this,ShopActivity.class));
-                finish();
+               // finish();
                 break;
             case R.id.imageCamera_btn:
                 //user navigates to Camera to click image for analysis
@@ -170,11 +173,11 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(getApplicationContext(),"No Analysis available to use for shopping :(",Toast.LENGTH_LONG).show();
         }else {
             String analysis = description.getText().toString();
-            Toast.makeText(getApplicationContext(),"Sending analysis text - "+analysis,Toast.LENGTH_SHORT).show();
-           /* Intent i = new Intent(ImageActivity.this, ShopActivity.class);
+            //Toast.makeText(getApplicationContext(),"Sending analysis text - "+analysis,Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(ImageActivity.this, ShopActivity.class);
             i.putExtra("Analysis",analysis);
-            startActivity(i); */
-            startActivity(new Intent(ImageActivity.this, ShopActivity.class));
+            startActivity(i);
+           // startActivity(new Intent(ImageActivity.this, ShopActivity.class));
         }
     }
 
@@ -187,7 +190,6 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
             final List<Feature> featureList = new ArrayList<>();
             featureList.add(feature);
-
             final List<AnnotateImageRequest> annotateImageRequests = new ArrayList<>();
             AnnotateImageRequest annotateImageReq = new AnnotateImageRequest();
             annotateImageReq.setFeatures(featureList);
@@ -264,10 +266,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         for (int i = 0; i < words.length; i++) {
             if(i==0){
                 //ignoring the percentage and keeping the words only for analysis
-                desc = desc+words[i]+", ";
+                desc = desc+words[i] + ", ";
+                Toast.makeText(getApplicationContext(), "Inside if",Toast.LENGTH_SHORT).show();
             }else if( (i%2)==0){
+                Toast.makeText(getApplicationContext(), "Inside else if",Toast.LENGTH_SHORT).show();
                 //even positioned words, do nothing
             }else {
+                Toast.makeText(getApplicationContext(), "Inside else",Toast.LENGTH_SHORT).show();
                 desc = desc+", "+words[i];
             }
         }
