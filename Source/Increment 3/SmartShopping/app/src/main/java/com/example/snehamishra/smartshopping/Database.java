@@ -7,10 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-/**
- * Created by Pradeep on 7/13/2017.
- */
-
 public class Database extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
@@ -33,8 +29,6 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-
 
     }
 
