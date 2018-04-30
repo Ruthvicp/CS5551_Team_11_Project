@@ -18,16 +18,13 @@ public class Third extends AppCompatActivity {
     SharedPreferences sp1;
     String extra= "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
 
-
         int orientation= ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         setRequestedOrientation(orientation);
-
 
         tvUnderweight = (TextView) findViewById(R.id.tvUnderweight);
         tvNormal = (TextView) findViewById(R.id.tvNormal);
@@ -38,9 +35,7 @@ public class Third extends AppCompatActivity {
         btnShare = (Button) findViewById(R.id.btnShare);
         btnSee= (Button) findViewById(R.id.btnSee);
 
-
         final Database db= new Database(this);
-
 
         Intent i = getIntent();
 final double bmi = i.getDoubleExtra("bmi", 0);
@@ -53,7 +48,6 @@ final double bmi = i.getDoubleExtra("bmi", 0);
         } else if (bmi > 30) {
         extra = extra + " you are obese. You can try reclining sofa's, couches etc., ";
         }
-
 
         btnSee.setText("Your BMI is " + "\n" + bmi + " and " + extra);
         btnSee.setTextColor(Color.parseColor("#00008B"));
@@ -75,18 +69,9 @@ final double bmi = i.getDoubleExtra("bmi", 0);
         final String a= sp1.getString("a","");
         final String p= sp1.getString("p","");
 
-
-
-
-
-
-
         btnShare.setOnClickListener(new View.OnClickListener() {
 @Override
 public void onClick(View v) {
-
-
-
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
         i.putExtra(Intent.EXTRA_TEXT, " Name :" + n + "\n" + "Age :" + a + "\n" +" Phone no :" + p + "\n" + " BMI  "  + bmi);
@@ -112,8 +97,6 @@ public void onClick(View v) {
                 db.addData(n,a,p,bmi);
             }
         });
-
-
 
         }
 
