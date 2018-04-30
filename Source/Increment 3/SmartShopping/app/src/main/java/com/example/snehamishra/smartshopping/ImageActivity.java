@@ -1,6 +1,7 @@
 package com.example.snehamishra.smartshopping;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -48,10 +49,14 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private Button camera, gallery, analyze, shop;
     private ImageView imageDisplay;
 
+    private final String SHOP_PREF = "PrefFile";
+
     //list of furniture names for the analysis search
     String[] furnitures = {"chair","table", "sofa", "love seat",
             "fan", "bed","couch","mattress","cushions",
             "recliners", "lamp", "furniture"};
+
+    String[] furnitureColors = {"red", "blue", "pink"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +66,10 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         //assign the widgets to instances
         assignWidgets();
 
-        String userName = getIntent().getStringExtra("userName");
+        SharedPreferences prefs = getSharedPreferences(SHOP_PREF, MODE_PRIVATE);
+        String userName = prefs.getString("userName", null);
+
+        //String userName = getIntent().getStringExtra("userName");
 
         //welcome user message
         uName.setText("Welcome "+userName +" to the Image Activity!");
@@ -173,7 +181,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     //user can choose the image analysis for shopping
     private void shopUsingAnalysis(){
-        if(description==null || description.getText()=="" || imageDisplay==null || bitmap ==null || imageCapturedUri==null){
+        if(description==null || description.getText()=="" ){
             Toast.makeText(getApplicationContext(),"No Analysis available to use for shopping :(",Toast.LENGTH_LONG).show();
         }else {
             String analysis = description.getText().toString();
@@ -186,7 +194,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callGoogleVision(){
-        if(imageDisplay == null ){
+        //if(imageDisplay == null || imageDisplay.getDrawable().equals("@android:drawable/ic_menu_gallery")){
+        if((bitmap == null && imageCapturedUri==null)){
             Toast.makeText(getApplicationContext(),"No image available to analyze!! try again",Toast.LENGTH_SHORT).show();
 
         }else {
@@ -211,6 +220,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             }
             else {
                 Toast.makeText(getApplicationContext(),"No Image available for Analysis!!",Toast.LENGTH_LONG).show();
+                return;
             }
             annotateImageRequests.add(annotateImageReq);
 
