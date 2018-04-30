@@ -33,6 +33,7 @@ import com.google.common.base.Objects;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -283,7 +284,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         String[] words = result.split("\\s+");
         for (int i = 0; i < words.length; i++) {
 
-            if(furnitures.equals(words[i]) || furnitureColors.equals(words[i])){
+            if(Arrays.asList(furnitures).contains(words[i]) || Arrays.asList(furnitureColors).contains(words[i])){
                 //set the value only if it is related to furniture
                 desc = desc +" "+ words[i];
             }else{
