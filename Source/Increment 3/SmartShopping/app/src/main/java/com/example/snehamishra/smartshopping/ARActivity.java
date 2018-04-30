@@ -1,5 +1,10 @@
 package com.example.snehamishra.smartshopping;
 
+
+/**
+ * Created by Ruthvic on 3/20/2018.
+ */
+
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
