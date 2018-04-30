@@ -56,7 +56,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             "fan", "bed","couch","mattress","cushions",
             "recliners", "lamp", "furniture"};
 
-    String[] furnitureColors = {"red", "blue", "pink"};
+    String[] furnitureColors = {"red", "blue", "pink","black"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -257,7 +257,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 protected void onPostExecute(String result) {
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
                     String convertedResult = convertDescriptionText(result);
-                    if(!convertedResult.isEmpty() || convertedResult!=""){
+                    if(convertedResult.isEmpty() || convertedResult!=""){
                         description.setText(convertedResult);
                     }else{
                        // description.setText("No Analysis available to display!");
@@ -283,10 +283,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             if(i==0){
                 //ignoring the percentage and keeping the words only for analysis
                // desc = desc + words[i] + ", ";
-                if(furnitures.equals(words[i])){
+                if(furnitures.equals(words[i]) || furnitureColors.equals(words[i])){
                     //set the value only if it is related to furniture
+                    desc = desc + words[i] +" ";
+                }else{
+                    //do noting and ignore other words
                 }
-                desc = desc + words[i] +" ";
+
                // Toast.makeText(getApplicationContext(), "Inside if",Toast.LENGTH_SHORT).show();
             }else if( (i%2)==0){
                 //Toast.makeText(getApplicationContext(), "Inside else if",Toast.LENGTH_SHORT).show();
@@ -295,7 +298,13 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             }else {
                 //Toast.makeText(getApplicationContext(), "Inside else",Toast.LENGTH_SHORT).show();
                 //desc = desc+", "+words[i];
-                desc = desc +" "+ words[i];
+                if(furnitures.equals(words[i]) || furnitureColors.equals(words[i])){
+                    //set the value only if it is related to furniture
+                    desc = desc +" "+ words[i];
+                }else{
+                    //do noting and ignore other words not related to furniture or colors
+                }
+
             }
         }
         return desc;
