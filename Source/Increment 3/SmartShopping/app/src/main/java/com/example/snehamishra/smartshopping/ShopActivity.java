@@ -31,7 +31,8 @@ public class ShopActivity extends AppCompatActivity
     private Context appContext;
     private Spinner spinSort;
     Button BMI;
-    String imageAnalysis="";
+   private EditText searchText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,8 +40,20 @@ public class ShopActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
 
-        //getting the image anlysis description here if any
+        //getting the image analysis description here if any
+        String imageAnalysis="";
         imageAnalysis = getIntent().getStringExtra("Analysis");
+
+        //assign widget values
+         searchText = findViewById(R.id.txt_search);
+
+        if(imageAnalysis.isEmpty() || imageAnalysis=="" || imageAnalysis==null){
+            //no image analysis available for search
+            //do nothing and wait for user to enter text
+        }else{
+            //search using the image analysis description
+            searchText.setText(imageAnalysis);
+        }
 
         ArrayList<String> spinnerArray =  new ArrayList<>();
         spinnerArray.add("Name");
@@ -81,16 +94,9 @@ public class ShopActivity extends AppCompatActivity
 
     public void searchCall(View v)
     {
-        EditText searchText = findViewById(R.id.txt_search);
-        if(imageAnalysis.isEmpty() || imageAnalysis==""){
-            //no image analysis available for search
             String searchPhrase = String.valueOf(searchText.getText());
             searchAPIs(searchPhrase);
-        }else{
-            //search using the image analysis description
-            searchText.setText(imageAnalysis);
-            searchAPIs(imageAnalysis);
-        }
+
 
     } // end searchCall
 

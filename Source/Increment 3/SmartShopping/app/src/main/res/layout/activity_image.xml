@@ -96,7 +96,8 @@
         android:layout_alignStart="@+id/imageAnalyze_btn"
         android:layout_below="@+id/imageAnalyze_btn"
         android:layout_marginTop="32dp"
-        android:text="Analysis Description" />
+        android:hint="Analysis Description"
+        />
 
     <!--
     <Button

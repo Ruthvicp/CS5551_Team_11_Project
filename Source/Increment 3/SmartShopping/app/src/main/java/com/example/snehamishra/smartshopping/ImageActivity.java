@@ -49,7 +49,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     private ImageView imageDisplay;
 
     //list of furniture names for the analysis search
-    String[] furnitures = {"chair","table", "sofa", "love seat", "fan", "bed","couch","mattress","cushions","recliners"};
+    String[] furnitures = {"chair","table", "sofa", "love seat",
+            "fan", "bed","couch","mattress","cushions",
+            "recliners", "lamp", "furniture"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +144,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
-            Toast.makeText(getApplicationContext(),"Loading Image, kindly wait !!",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(getApplicationContext(),"Loading Image, kindly wait !!",Toast.LENGTH_SHORT).show();
             switch (requestCode){
                 case CAMERA_INTENT:
                 {
@@ -169,7 +171,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     //user can choose the image analysis for shopping
     private void shopUsingAnalysis(){
-        if(description==null || description.getText()==""){
+        if(description==null || description.getText()=="" || imageDisplay==null || bitmap ==null || imageCapturedUri==null){
             Toast.makeText(getApplicationContext(),"No Analysis available to use for shopping :(",Toast.LENGTH_LONG).show();
         }else {
             String analysis = description.getText().toString();
@@ -266,14 +268,17 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         for (int i = 0; i < words.length; i++) {
             if(i==0){
                 //ignoring the percentage and keeping the words only for analysis
-                desc = desc+words[i] + ", ";
-                Toast.makeText(getApplicationContext(), "Inside if",Toast.LENGTH_SHORT).show();
+               // desc = desc + words[i] + ", ";
+                desc = desc + words[i] +" ";
+               // Toast.makeText(getApplicationContext(), "Inside if",Toast.LENGTH_SHORT).show();
             }else if( (i%2)==0){
-                Toast.makeText(getApplicationContext(), "Inside else if",Toast.LENGTH_SHORT).show();
-                //even positioned words, do nothing
+                //Toast.makeText(getApplicationContext(), "Inside else if",Toast.LENGTH_SHORT).show();
+                //even positioned words, do nothing, ignoring them
+                //these words are the percentage of the labels detected
             }else {
-                Toast.makeText(getApplicationContext(), "Inside else",Toast.LENGTH_SHORT).show();
-                desc = desc+", "+words[i];
+                //Toast.makeText(getApplicationContext(), "Inside else",Toast.LENGTH_SHORT).show();
+                //desc = desc+", "+words[i];
+                desc = desc +" "+ words[i];
             }
         }
         return desc;
