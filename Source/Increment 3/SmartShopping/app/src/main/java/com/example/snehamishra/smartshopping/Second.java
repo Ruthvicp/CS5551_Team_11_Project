@@ -155,20 +155,6 @@ public class Second extends AppCompatActivity {
             startActivity(i);
 
         }
-     /*   if(item.getItemId()==R.id.Location)
-        {
-            Intent i= new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse("geo:0,0?q="));
-            startActivity(i);
-
-        }
-      if(item.getItemId()==R.id.Distance)
-        {
-         Intent i = new Intent(Second.this,Distance.class);
-            startActivity(i);
-
-        }
-*/
 
 
         return super.onOptionsItemSelected(item);

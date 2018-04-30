@@ -27,7 +27,6 @@
         <activity android:name=".Animation"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Second" />
-        <activity android:name=".Distance" />
         <activity android:name=".Third" />
         <activity android:name=".RecommendationActivity"></activity>
     </application>
