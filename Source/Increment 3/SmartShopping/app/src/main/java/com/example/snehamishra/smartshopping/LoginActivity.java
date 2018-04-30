@@ -1,6 +1,7 @@
 package com.example.snehamishra.smartshopping;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button loginUser;
     private EditText userName, userPassword;
     private FirebaseAuth auth;
+
+    private final String SHOP_PREF = "PrefFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +125,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     //on successful login user is navigated to image activity
                    // startActivity(new Intent(LoginActivity.this,ImageActivity.class));
                     Intent intent = new Intent(LoginActivity.this, ImageActivity.class);
-                    intent.putExtra("userName", userName.getText().toString().trim());
+
+                    SharedPreferences.Editor editor = getSharedPreferences(SHOP_PREF, MODE_PRIVATE).edit();
+                    editor.putString("userName", userName.getText().toString().trim());
+                    editor.apply();
+
+                    //intent.putExtra("userName", userName.getText().toString().trim());
                     // so when the user press back button from the Image Activity, it wont come to Login activity
                     // clears all the activity on top of stack
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
