@@ -286,7 +286,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
             if(Arrays.asList(furnitures).contains(words[i]) || Arrays.asList(furnitureColors).contains(words[i])){
                 //set the value only if it is related to furniture
-                desc = desc +" "+ words[i];
+                if(!desc.contains(words[i])) {
+                    desc = desc + " " + words[i];
+                }
             }else{
                 //do noting and ignore other words not related to furniture or colors
             }
