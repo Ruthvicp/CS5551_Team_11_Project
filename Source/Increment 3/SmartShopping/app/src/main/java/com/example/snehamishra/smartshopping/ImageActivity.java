@@ -53,6 +53,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             "fan", "bed","couch","mattress","cushions",
             "recliners", "lamp", "furniture"};
 
+    String[] furnitureColors = {"red", "blue", "pink"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,7 +175,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
     //user can choose the image analysis for shopping
     private void shopUsingAnalysis(){
-        if(description==null || description.getText()=="" || imageDisplay==null || bitmap ==null || imageCapturedUri==null){
+        if(description==null || description.getText()=="" ){
             Toast.makeText(getApplicationContext(),"No Analysis available to use for shopping :(",Toast.LENGTH_LONG).show();
         }else {
             String analysis = description.getText().toString();
@@ -186,7 +188,8 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void callGoogleVision(){
-        if(imageDisplay == null ){
+        //if(imageDisplay == null || imageDisplay.getDrawable().equals("@android:drawable/ic_menu_gallery")){
+        if((bitmap == null && imageCapturedUri==null)){
             Toast.makeText(getApplicationContext(),"No image available to analyze!! try again",Toast.LENGTH_SHORT).show();
 
         }else {
