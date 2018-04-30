@@ -259,7 +259,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
 
                     String convertedResult = convertDescriptionText(result);
-                    Toast.makeText(getApplicationContext(),"Analysis text is - "+convertedResult,Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Analysis text is - "+convertedResult,Toast.LENGTH_SHORT).show();
                     if(convertedResult.isEmpty() || convertedResult!=""){
                         description.setText(convertedResult);
                     }else{

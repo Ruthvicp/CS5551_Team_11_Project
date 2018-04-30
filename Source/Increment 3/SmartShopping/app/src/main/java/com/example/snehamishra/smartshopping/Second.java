@@ -138,6 +138,12 @@ public class Second extends AppCompatActivity {
 
     }
 
+    public void back(View v)
+    {
+        startActivity(new Intent(Second.this,ImageActivity.class));
+        finish();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
