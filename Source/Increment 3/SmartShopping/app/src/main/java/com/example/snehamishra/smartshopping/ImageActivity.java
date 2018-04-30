@@ -257,10 +257,12 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 protected void onPostExecute(String result) {
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
                     String convertedResult = convertDescriptionText(result);
-                    if(convertedResult.isEmpty() || convertedResult!=""){
+                    if(!convertedResult.isEmpty() || convertedResult!=""){
                         description.setText(convertedResult);
                     }else{
-                        description.setText("No Analysis available to display!");
+                       // description.setText("No Analysis available to display!");
+                        description.setText("");
+                        Toast.makeText(getApplicationContext(),"No Analysis available to display!!",Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -281,6 +283,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
             if(i==0){
                 //ignoring the percentage and keeping the words only for analysis
                // desc = desc + words[i] + ", ";
+                if(furnitures.equals(words[i])){
+                    //set the value only if it is related to furniture
+                }
                 desc = desc + words[i] +" ";
                // Toast.makeText(getApplicationContext(), "Inside if",Toast.LENGTH_SHORT).show();
             }else if( (i%2)==0){
