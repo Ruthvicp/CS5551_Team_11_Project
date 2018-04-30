@@ -103,7 +103,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.imageSkipTV:
                 //user navigates to the Shopping page
-                startActivity(new Intent(ImageActivity.this,ShopActivity.class));
+                Intent i = new Intent(ImageActivity.this, ShopActivity.class);
+                i.putExtra("Analysis","");
+                startActivity(i);
                // finish();
                 break;
             case R.id.imageCamera_btn:
