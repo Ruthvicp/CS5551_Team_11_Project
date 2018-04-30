@@ -256,7 +256,9 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
 
                 protected void onPostExecute(String result) {
                     Toast.makeText(getApplicationContext(),"Analysis complete!!",Toast.LENGTH_SHORT).show();
+
                     String convertedResult = convertDescriptionText(result);
+                    Toast.makeText(getApplicationContext(),"Analysis text is - "+convertedResult,Toast.LENGTH_SHORT).show();
                     if(convertedResult.isEmpty() || convertedResult!=""){
                         description.setText(convertedResult);
                     }else{
@@ -280,7 +282,15 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
         //Toast.makeText(getApplicationContext(), "getDescriptionText is - "+result,Toast.LENGTH_SHORT).show();
         String[] words = result.split("\\s+");
         for (int i = 0; i < words.length; i++) {
-            if(i==0){
+
+            if(furnitures.equals(words[i]) || furnitureColors.equals(words[i])){
+                //set the value only if it is related to furniture
+                desc = desc +" "+ words[i];
+            }else{
+                //do noting and ignore other words not related to furniture or colors
+            }
+
+           /* if(i==0){
                 //ignoring the percentage and keeping the words only for analysis
                // desc = desc + words[i] + ", ";
                 if(furnitures.equals(words[i]) || furnitureColors.equals(words[i])){
@@ -305,7 +315,7 @@ public class ImageActivity extends AppCompatActivity implements View.OnClickList
                     //do noting and ignore other words not related to furniture or colors
                 }
 
-            }
+            }*/
         }
         return desc;
     }
